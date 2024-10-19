@@ -1,0 +1,13 @@
+ROUTINE ExercicoObjeto3
+ExercicoObjeto3 ;
+    Kill ^Treinamento.Data.TurmaD
+	Set nomex = "Chico|Felipe|Jose"
+    Set turma = ##class(Treinamento.Data.Turma).%New()
+    Set turma.Curso.Nome = "Fisica Nuclear"
+    Set turma.DataInicio = "19/10/2024"
+    Set turma.Instrutor = "Pedro"
+	For i=1:1:3 {
+		Do turma.Alunos.SetAt($Piece(nomex,"|",i))
+    }
+    Set Status = turma.%Save()
+    Quit

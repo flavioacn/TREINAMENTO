@@ -1,0 +1,12 @@
+ROUTINE ExercicioObjeto1MAC
+ExercicioObjeto ;
+	Kill ^Treinamento.Data.AlunoD
+	Set nomex = "Alice|Rafaela|Flavio"
+	For i=1:1:3 {
+		Set aluno = ##class(Treinamento.Data.Aluno).%New()
+		Set aluno.Nome = $Piece(nomex,"|",i)
+		Set aluno.Matricula = "2024"_i
+		Set aluno.Idade = 10*i
+		Set Status = aluno.%Save()
+	}
+	Quit
