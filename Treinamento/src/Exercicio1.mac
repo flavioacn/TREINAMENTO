@@ -1,5 +1,6 @@
 ROUTINE Exercicio1
 Exercicio1
+	//teste 2
 	Read "Digite o valor de X:", X
 	Read "Digite o valor de Y:", Y
 	For a=X:1:Y {
