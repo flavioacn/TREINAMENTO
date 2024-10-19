@@ -1,9 +1,15 @@
 Class Treinamento.Data.Turma Extends (%Persistent, %XML.Adaptor)
 {
 
-Property Nome As %String(MAXLEN = 200) [ SqlColumnNumber = 2 ];
+Property Instrutor As Treinamento.Data.Instrutor [ SqlColumnNumber = 2 ];
 
-Property Matricula As %Integer [ SqlColumnNumber = 3 ];
+Property DataInicio As %Date [ SqlColumnNumber = 3 ];
+
+Property Status As %String [ SqlColumnNumber = 4 ];
+
+Property Alunos As list Of Treinamento.Data.Aluno [ SqlColumnNumber = 5 ];
+
+Property Curso As Treinamento.Data.Curso [ SqlColumnNumber = 6 ];
 
 Storage Default
 {
@@ -12,10 +18,19 @@ Storage Default
 <Value>%%CLASSNAME</Value>
 </Value>
 <Value name="2">
-<Value>Nome</Value>
+<Value>Instrutor</Value>
 </Value>
 <Value name="3">
-<Value>Matricula</Value>
+<Value>DataInicio</Value>
+</Value>
+<Value name="4">
+<Value>Status</Value>
+</Value>
+<Value name="5">
+<Value>Alunos</Value>
+</Value>
+<Value name="6">
+<Value>Curso</Value>
 </Value>
 </Data>
 <DataLocation>^Treinamento.Data.TurmaD</DataLocation>
