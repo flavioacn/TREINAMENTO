@@ -1,0 +1,4 @@
+ROUTINE Treinamento
+Treinamento; Treinamento
+	Set x = "Teste de VSCode 1"
+	Write X

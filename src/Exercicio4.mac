@@ -1,0 +1,23 @@
+ROUTINE Exercicio4
+Exercicio4 ;
+    Read "Digite o valor num1:",num1
+    Read "Digite o valor num2:",num2
+    Read "Digite o valor num2:",num3
+    Set (conti,conta,contb)=0
+    For i=num1:1:num2 {
+        If i#11=5 {
+            Set conti=conti+1
+            Write !,"Com resto 5: "_i 
+        }
+    }
+     For a=num2:1:num3 {
+        If a#3=0 {
+            Set conta=conta+1
+            Write !,"Multiplos de 3: "_a 
+        }
+     }
+     For b=num1:1:num2 {
+            Set contb=contb+b
+     }
+    Write !,"Soma: "_contb
+    Quit

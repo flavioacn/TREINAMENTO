@@ -1,0 +1,4 @@
+ROUTINE Teste2
+Teste2; Leitura 23
+	Read !,x
+	Write !,x
