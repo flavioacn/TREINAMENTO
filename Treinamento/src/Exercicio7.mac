@@ -1,0 +1,7 @@
+ROUTINE Exercico7
+Exercico7 ;
+    Set nome="Glavio Nunes"
+    Write nome, !
+    Write $TRanslate(nome,"G","F"), !
+    Write $Length(nome),!
+    Quit

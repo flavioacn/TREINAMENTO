@@ -1,0 +1,8 @@
+ROUTINE Exercicio3
+Exercicio3
+	Read "Digite o valor de X:", X
+	Read "Digite o valor de Y:", Y
+	For a=X:1:Y {
+		If a#2'=0 Write a_" é par",!
+	} 
+Quit

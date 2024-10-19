@@ -1,0 +1,27 @@
+ROUTINE Exercicio5
+Exercicio5 ;
+    For a=1:1 {
+    Read "Digite a matricula: ",matricula,!
+    If matricula="" Quit
+    Read "Digite o nome: ", nome,!
+    Read "Digite o Telefone: ", Telefone,!
+    Read "Digite data de nascimento: ",nascimento,!
+    Read "Digite sexo: ",sexo,!
+    ;Set ^Alunos(matricula)=nome_"|"_telefone_"|"_nascimento_"|"_sexo
+    Set ^Alunos(a,"matricula")=matricula
+    Set ^Alunos(a,"nome")=nome
+    Set ^Alunos(a,"telefone")=telefone
+    Set ^Alunos(a,"nascimento")=nascimento
+    Set ^Alunos(a,"sexo")=sexo
+    }
+    Set (indice, dados)=""
+    For a=1:1 {
+        Set indice=$Order(^Alunos(indice)) Quit:indice=""
+        For b=1:1 {
+            Set dados=$Order(^Alunos(indice,dados)) Quit:dados=""
+            Set x=^Alunos(indice,dados)
+            Write !,indice," - ",dados," - ", x
+        }
+    }
+
+    Quit

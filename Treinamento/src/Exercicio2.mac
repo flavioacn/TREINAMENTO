@@ -1,0 +1,9 @@
+ROUTINE Exercicioi2
+Exercicio2
+	Read "Digite o valor de X:", X
+	Read "Digite o valor de Y:", Y
+	Set count=0
+	For a=X:1:Y {
+		If a\10=0 set count=count+1
+	} 
+	W !, count

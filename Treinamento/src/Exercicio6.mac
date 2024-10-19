@@ -1,0 +1,7 @@
+ROUTINE Exercicio6
+Exercicio6 ;
+    Read "Digite a data externa: ",data
+    Write !,"Hora interna: ",$ZDateH(data,4),!
+    Write !,"Hora formato islamico: ",$ZDate($ZDateH(data,4),18),!
+    Write !,$Piece($ZDate($ZDateH(data,4),18)," ",2)
+    Quit
