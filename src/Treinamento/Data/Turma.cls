@@ -11,6 +11,46 @@ Property Alunos As list Of Treinamento.Data.Aluno [ SqlColumnNumber = 5 ];
 
 Property Curso As Treinamento.Data.Curso [ SqlColumnNumber = 6 ];
 
+Method VerificaStatus(curso As %String) As %String [ Language = objectscript ]
+{
+	Set statusTurma = ""
+	Set sql = "SELECT * FROM Treinamento.Data.Turma Where Curso->Nome ='"_curso_"'"
+	Set resultSet = ##class(%ResultSet).%New()
+	Set status = resultSet.Prepare(sql)
+	Set status = resultSet.Execute()
+	
+	If resultSet.Next() {
+		Set statusTurma = resultSet.Get("Status")	 
+	}
+	Return statusTurma
+}
+
+ClassMethod VerificaStatus1(curso As %String) As %String [ Language = objectscript ]
+{
+	Set statusTurma = ""
+	Set sql = "SELECT * FROM Treinamento.Data.Turma Where Curso->Nome ='"_curso_"'"
+	Set resultSet = ##class(%ResultSet).%New()
+	Set status = resultSet.Prepare(sql)
+	Set status = resultSet.Execute()
+	
+	If resultSet.Next() {
+		Set statusTurma = resultSet.Get("Status")	 
+	}
+	Return statusTurma
+}
+
+ClassMethod ImprimeTurma(curso As %String) As %String
+{
+	Set sql = "SELECT * FROM Treinamento.Data.Turma Where Curso->Nome ='"_curso_"'"
+	Set resultSet = ##class(%ResultSet).%New()
+	Set status = resultSet.Prepare(sql)
+	Set status = resultSet.Execute()
+
+    For {
+        
+    }
+}
+
 Storage Default
 {
 <Data name="TurmaDefaultData">
@@ -35,8 +75,46 @@ Storage Default
 </Data>
 <DataLocation>^Treinamento.Data.TurmaD</DataLocation>
 <DefaultData>TurmaDefaultData</DefaultData>
+<ExtentSize>1</ExtentSize>
 <IdLocation>^Treinamento.Data.TurmaD</IdLocation>
 <IndexLocation>^Treinamento.Data.TurmaI</IndexLocation>
+<Property name="%%CLASSNAME">
+<AverageFieldSize>2</AverageFieldSize>
+<OutlierSelectivity>.999999:</OutlierSelectivity>
+<Selectivity>0.0001%</Selectivity>
+</Property>
+<Property name="%%ID">
+<AverageFieldSize>3</AverageFieldSize>
+<Selectivity>1</Selectivity>
+</Property>
+<Property name="Alunos">
+<AverageFieldSize>17</AverageFieldSize>
+<OutlierSelectivity>.999999:$lb($lb("1"),$lb("2"),$lb("3"))</OutlierSelectivity>
+<Selectivity>0.0001%</Selectivity>
+</Property>
+<Property name="Curso">
+<AverageFieldSize>3</AverageFieldSize>
+<OutlierSelectivity>.999999:1</OutlierSelectivity>
+<Selectivity>0.0001%</Selectivity>
+</Property>
+<Property name="DataInicio">
+<AverageFieldSize>5</AverageFieldSize>
+<OutlierSelectivity>.999999:67132</OutlierSelectivity>
+<Selectivity>0.0001%</Selectivity>
+</Property>
+<Property name="Instrutor">
+<AverageFieldSize>3</AverageFieldSize>
+<OutlierSelectivity>.999999:1</OutlierSelectivity>
+<Selectivity>0.0001%</Selectivity>
+</Property>
+<Property name="Status">
+<AverageFieldSize>12</AverageFieldSize>
+<OutlierSelectivity>.999999:"Incompleto"</OutlierSelectivity>
+<Selectivity>0.0001%</Selectivity>
+</Property>
+<SQLMap name="IDKEY">
+<BlockCount>-4</BlockCount>
+</SQLMap>
 <StreamLocation>^Treinamento.Data.TurmaS</StreamLocation>
 <Type>%Storage.Persistent</Type>
 }
