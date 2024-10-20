@@ -7,7 +7,8 @@ ExercicoObjeto3 ;
     Set turma.DataInicio = "19/10/2024"
     Set turma.Instrutor = "Pedro"
 	For i=1:1:3 {
-		Do turma.Alunos.SetAt($Piece(nomex,"|",i))
+        Set oAlunos=##class(Treinamento.Data.Aluno).%OpenId(i)
+		Do turma.Alunos.SetAt(oAlunoslunos)
     }
     Set Status = turma.%Save()
     Quit
