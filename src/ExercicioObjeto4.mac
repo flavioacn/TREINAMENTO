@@ -1,0 +1,5 @@
+ROUTINE ExercicioObjeto4
+ExercicioObjeto4 ;
+    Set turma=##class(Treinamento.Data.Turma).%New()
+    Set statusTurma = turma.VerificaStatus("OBJ IRIS")
+    Quit

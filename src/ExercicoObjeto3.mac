@@ -1,14 +1,16 @@
 ROUTINE ExercicoObjeto3
 ExercicoObjeto3 ;
     Kill ^Treinamento.Data.TurmaD
-	Set nomex = "Chico|Felipe|Jose"
     Set turma = ##class(Treinamento.Data.Turma).%New()
-    Set turma.Curso.Nome = "Fisica Nuclear"
-    Set turma.DataInicio = "19/10/2024"
-    Set turma.Instrutor = "Pedro"
+    Set oCurso = ##class(Treinamento.Data.Curso).%OpenId(1)
+    Set oInstrutor = ##class(Treinamento.Data.Instrutor).%OpenId(1)
+    Set turma.Curso = oCurso
+    Set turma.DataInicio = $ZdateH("19/10/2024",4)
+    Set turma.Instrutor = oInstrutor
+    Set turma.Status = "Incompleto"
 	For i=1:1:3 {
         Set oAlunos=##class(Treinamento.Data.Aluno).%OpenId(i)
-		Do turma.Alunos.SetAt(oAlunoslunos)
+		Do turma.Alunos.Insert(oAlunos)
     }
     Set Status = turma.%Save()
     Quit
