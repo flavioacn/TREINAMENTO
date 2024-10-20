@@ -41,14 +41,32 @@ ClassMethod VerificaStatus1(curso As %String) As %String [ Language = objectscri
 
 ClassMethod ImprimeTurma(curso As %String) As %String
 {
-	Set sql = "SELECT * FROM Treinamento.Data.Turma Where Curso->Nome ='"_curso_"'"
-	Set resultSet = ##class(%ResultSet).%New()
+	Set tsc=$$$OK
+    Try {
+    Set sql = "SELECT * FROM Treinamento.Data.Turma Where Curso->Nome ='"_curso_"'"
+	Set resultSet = ##class(%SQL.Statement).%New()
 	Set status = resultSet.Prepare(sql)
 	Set status = resultSet.Execute()
+    
+    If resultSet.Next()
+    {
+        Set idTurma = resultSet("ID")
+        Set turma = ##class(Treinamento.Data.Turma).%OpenId(idTurma)
+    }
+    For x = 1:1:turma.Alunos.Count()
+    {
 
-    For {
+        Set aluno = turma.GetAt(x)
+        W "Nome: "_aluno.Nome," Matricula: "_aluno.Matricula
         
     }
+    }
+    Catch (exception) {
+        Set tsc = exception.AsStatus()
+        Set tsc = $SYSTEM.Status.GetErrorText(tsc)
+        Throw exception
+    }
+    Quit
 }
 
 Storage Default
